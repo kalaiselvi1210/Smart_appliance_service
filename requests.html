@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Service Requests - Track Status</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🔧</div>
+        <span>SmartFix System</span>
+      </a>
+      <button class="mobile-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="request.html">Request Service</a></li>
+        <li><a href="requests.html" class="active">Track Requests</a></li>
+        <li><a href="admin.html">Admin Portal</a></li>
+        <li><a href="about.html">About & Viva Guide</a></li>
+        <li><a href="request.html" class="nav-cta">Book Technician</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Track Service Requests</h2>
+        <p>Monitor real-time progress, technician assignment, and repair status.</p>
+      </div>
+
+      <!-- Filter Controls Toolbar -->
+      <div class="toolbar-card">
+        <div class="toolbar-search">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search by Request ID, Name, or Brand...">
+        </div>
+        <div class="toolbar-filters">
+          <select id="applianceFilter" class="form-control">
+            <option value="">All Appliances</option>
+            <option value="Air Conditioner">Air Conditioner</option>
+            <option value="Refrigerator">Refrigerator</option>
+            <option value="Washing Machine">Washing Machine</option>
+            <option value="Television">Television</option>
+            <option value="Ceiling Fan">Ceiling Fan</option>
+            <option value="Mixer Grinder">Mixer Grinder</option>
+            <option value="Microwave Oven">Microwave Oven</option>
+            <option value="Water Heater">Water Heater</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <select id="statusFilter" class="form-control">
+            <option value="">All Statuses</option>
+            <option value="Request Submitted">Request Submitted</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Technician Assigned">Technician Assigned</option>
+            <option value="Service in Progress">Service in Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+
+          <button id="resetFiltersBtn" class="btn btn-secondary btn-sm">Reset</button>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div id="requestsGrid" class="requests-grid">
+        <!-- Rendered dynamically by js/requests.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Smart Appliance Service Request System. Academic Project.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/requests.js"></script>
+</body>
+</html>

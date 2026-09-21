@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Service - Smart Appliance Service Request System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🔧</div>
+        <span>SmartFix System</span>
+      </a>
+      <button class="mobile-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="request.html" class="active">Request Service</a></li>
+        <li><a href="requests.html">Track Requests</a></li>
+        <li><a href="admin.html">Admin Portal</a></li>
+        <li><a href="about.html">About & Viva Guide</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Request Form Area -->
+  <main class="section">
+    <div class="container">
+      <div class="form-card">
+        <h2>Schedule Appliance Repair</h2>
+        <p class="form-subtitle">Fill in the complete information below to book a certified technician visit.</p>
+
+        <form id="serviceForm" novalidate>
+          
+          <!-- Step 1: Customer Details -->
+          <h3 class="form-section-title">1. Customer Information</h3>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="fullName">Full Name <span class="req">*</span></label>
+              <input type="text" id="fullName" class="form-control" placeholder="e.g. John Doe">
+              <div id="fullNameError" class="error-text"></div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" class="form-control" placeholder="name@example.com">
+              <div id="emailError" class="error-text"></div>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phone" class="form-control" placeholder="10-digit mobile number">
+              <div id="phoneError" class="error-text"></div>
+            </div>
+            <div class="form-group">
+              <label for="address">Full Service Address <span class="req">*</span></label>
+              <input type="text" id="address" class="form-control" placeholder="Door No, Street, City, Pincode">
+              <div id="addressError" class="error-text"></div>
+            </div>
+          </div>
+
+          <!-- Step 2: Appliance Details -->
+          <h3 class="form-section-title">2. Appliance Information</h3>
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label for="applianceType">Appliance Type <span class="req">*</span></label>
+              <select id="applianceType" class="form-control">
+                <option value="">-- Choose Appliance --</option>
+                <option value="Air Conditioner">Air Conditioner</option>
+                <option value="Refrigerator">Refrigerator</option>
+                <option value="Washing Machine">Washing Machine</option>
+                <option value="Television">Television</option>
+                <option value="Ceiling Fan">Ceiling Fan</option>
+                <option value="Mixer Grinder">Mixer Grinder</option>
+                <option value="Microwave Oven">Microwave Oven</option>
+                <option value="Water Heater">Water Heater</option>
+                <option value="Other">Other</option>
+              </select>
+              <div id="applianceTypeError" class="error-text"></div>
+            </div>
+            <div class="form-group">
+              <label for="brand">Brand Name</label>
+              <input type="text" id="brand" class="form-control" placeholder="e.g. LG, Samsung, Sony">
+            </div>
+            <div class="form-group">
+              <label for="model">Model Number</label>
+              <input type="text" id="model" class="form-control" placeholder="e.g. WM-2024-X">
+            </div>
+          </div>
+
+          <!-- Step 3: Problem Breakdown & Image Upload -->
+          <h3 class="form-section-title">3. Problem Details & Appliance Photo</h3>
+          <div class="form-group">
+            <label for="problemType">Service Problem Type <span class="req">*</span></label>
+            <select id="problemType" class="form-control">
+              <option value="">-- Select Problem Type --</option>
+              <option value="Not turning on">Not turning on</option>
+              <option value="Making unusual noise">Making unusual noise</option>
+              <option value="Not cooling">Not cooling</option>
+              <option value="Water leakage">Water leakage</option>
+              <option value="Display problem">Display problem</option>
+              <option value="Electrical problem">Electrical problem</option>
+              <option value="Physical damage">Physical damage</option>
+              <option value="Other">Other</option>
+            </select>
+            <div id="problemTypeError" class="error-text"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Detailed Problem Description <span class="req">*</span></label>
+            <textarea id="description" rows="3" class="form-control" placeholder="Describe symptoms, noise frequency, error codes..."></textarea>
+            <div id="descriptionError" class="error-text"></div>
+          </div>
+
+          <!-- Mandatory Image Upload Section -->
+          <div class="form-group">
+            <label>Upload Appliance Photo <span class="req">*</span> (JPG, JPEG, PNG - Max 2MB)</label>
+            <input type="file" id="applianceImage" accept=".jpg, .jpeg, .png" style="display: none;">
+            
+            <div class="upload-box" id="uploadDropZone">
+              <div class="upload-icon">📷</div>
+              <strong>Click to choose an image from your device</strong>
+              <div class="upload-instructions">Supported: JPG, JPEG, PNG (Validated and stored locally via FileReader)</div>
+            </div>
+
+            <!-- Preview Card -->
+            <div id="previewWrapper" class="image-preview-wrapper">
+              <div class="preview-content">
+                <img id="previewImage" class="preview-thumb" src="" alt="Appliance Preview">
+                <div class="preview-meta">
+                  <div id="previewFileName" class="preview-meta-name">file-name.png</div>
+                  <div id="previewFileSize" class="preview-meta-size">120 KB</div>
+                </div>
+                <button type="button" id="removeImageBtn" class="btn btn-sm btn-danger">Remove</button>
+              </div>
+            </div>
+            <div id="imageError" class="error-text"></div>
+          </div>
+
+          <!-- Step 4: Booking Schedule -->
+          <h3 class="form-section-title">4. Preferred Service Slot</h3>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="preferredDate">Preferred Date <span class="req">*</span></label>
+              <input type="date" id="preferredDate" class="form-control">
+              <div id="preferredDateError" class="error-text"></div>
+            </div>
+            <div class="form-group">
+              <label for="preferredTime">Preferred Time Window</label>
+              <select id="preferredTime" class="form-control">
+                <option value="09:00 AM - 12:00 PM">09:00 AM - 12:00 PM (Morning)</option>
+                <option value="12:00 PM - 03:00 PM">12:00 PM - 03:00 PM (Afternoon)</option>
+                <option value="03:00 PM - 06:00 PM">03:00 PM - 06:00 PM (Evening)</option>
+                <option value="Flexible">Flexible / Any Time</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Special Instructions or Gate Codes</label>
+            <input type="text" id="notes" class="form-control" placeholder="e.g. Call before arrival, leave with security">
+          </div>
+
+          <!-- Form Action Buttons -->
+          <div style="display: flex; gap: 15px; margin-top: 30px;">
+            <button type="submit" class="btn btn-primary" style="flex: 2;">Submit Service Request</button>
+            <button type="reset" class="btn btn-secondary" style="flex: 1;" onclick="window.location.reload();">Reset</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Smart Appliance Service Request System. Academic Project.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/request.js"></script>
+</body>
+</html>

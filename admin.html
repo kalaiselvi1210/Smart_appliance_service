@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Smart Appliance Service Request System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🔧</div>
+        <span>SmartFix System</span>
+      </a>
+      <button class="mobile-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="request.html">Request Service</a></li>
+        <li><a href="requests.html">Track Requests</a></li>
+        <li><a href="admin.html" class="active">Admin Portal</a></li>
+        <li><a href="about.html">About & Viva Guide</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Admin Main Dashboard -->
+  <main class="section">
+    <div class="container">
+      
+      <!-- Top Action Bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; margin-bottom:25px;">
+        <div>
+          <h2 style="color:var(--secondary); margin-bottom:4px;">Technician & Request Management</h2>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Monitor real-time repair metrics, update ticket stages, and view customer appliances.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button id="loadDemoBtn" class="btn btn-primary btn-sm">⚡ Load Demo Data (5 Requests)</button>
+          <button id="clearDataBtn" class="btn btn-secondary btn-sm" style="color:var(--danger); border-color:var(--danger);">Clear All</button>
+        </div>
+      </div>
+
+      <!-- KPI Analytical Cards Grid -->
+      <div class="stats-grid">
+        <div class="stat-card" style="border-top-color: var(--secondary);">
+          <h4>Total Requests</h4>
+          <div class="stat-number" id="statTotal">0</div>
+        </div>
+        <div class="stat-card" style="border-top-color: var(--info);">
+          <h4>Submitted</h4>
+          <div class="stat-number" id="statSubmitted">0</div>
+        </div>
+        <div class="stat-card" style="border-top-color: var(--purple);">
+          <h4>Under Review</h4>
+          <div class="stat-number" id="statReview">0</div>
+        </div>
+        <div class="stat-card" style="border-top-color: var(--warning);">
+          <h4>Assigned</h4>
+          <div class="stat-number" id="statAssigned">0</div>
+        </div>
+        <div class="stat-card" style="border-top-color: #0369a1;">
+          <h4>In Progress</h4>
+          <div class="stat-number" id="statProgress">0</div>
+        </div>
+        <div class="stat-card" style="border-top-color: var(--success);">
+          <h4>Completed</h4>
+          <div class="stat-number" id="statCompleted">0</div>
+        </div>
+        <div class="stat-card" style="border-top-color: var(--danger);">
+          <h4>Cancelled</h4>
+          <div class="stat-number" id="statCancelled">0</div>
+        </div>
+      </div>
+
+      <!-- Filter Controls Toolbar -->
+      <div class="toolbar-card">
+        <div class="toolbar-search">
+          <input type="text" id="adminSearch" class="form-control" placeholder="Search by ID, customer name, phone, or appliance...">
+        </div>
+        <div class="toolbar-filters">
+          <select id="adminStatusFilter" class="form-control">
+            <option value="">Filter by Status (All)</option>
+            <option value="Request Submitted">Request Submitted</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Technician Assigned">Technician Assigned</option>
+            <option value="Service in Progress">Service in Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Data Table -->
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Photo</th>
+              <th>Customer Info</th>
+              <th>Appliance Details</th>
+              <th>Problem Summary</th>
+              <th>Scheduled Slot</th>
+              <th>Update Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+            <!-- Rendered by js/admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Smart Appliance Service Request System. Academic Project.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
