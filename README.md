@@ -2,6 +2,14 @@
 
 A responsive and user-friendly website designed for Smart Appliances Services, providing information about smart home appliances, installation, maintenance, repair, and customer support services.
 
+---
+
+🌐 Live Demo
+
+🔗 Live Website: https://kalaiselvi1210.github.io/Smart_appliance_service/about.html
+
+---
+
 📌 Project Overview
 
 The Smart Appliances Services website is designed to provide customers with an easy way to explore smart appliances and their related services. The website includes sections for available services, featured appliances, benefits, and contact information.
