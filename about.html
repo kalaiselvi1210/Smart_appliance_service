@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About & Viva Preparation Guide</title>
+  <title>About</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,7 +21,7 @@
         <li><a href="request.html">Request Service</a></li>
         <li><a href="requests.html">Track Requests</a></li>
         <li><a href="admin.html">Admin Portal</a></li>
-        <li><a href="about.html" class="active">About & Viva Guide</a></li>
+        <li><a href="about.html" class="active">About</a></li>
       </ul>
     </div>
   </nav>
@@ -30,13 +30,13 @@
   <main class="section">
     <div class="container">
       <div class="section-header">
-        <h2>About The Project & Viva Questions</h2>
-        <p>A complete technical guide to help explain design choices and code mechanics during evaluation.</p>
+        <h2>About SmartFix</h2>
+        <p>A complete technical guide.</p>
       </div>
 
       <!-- Technical Architecture Overview -->
       <div class="details-card">
-        <h3 style="margin-bottom:12px; color:var(--secondary);">1. Project Purpose & Architecture</h3>
+        <h3 style="margin-bottom:12px; color:var(--secondary);">Purpose & Architecture</h3>
         <p style="margin-bottom:12px;">
           The <strong>Smart Appliance Service Request System</strong> addresses the operational bottlenecks of manual phone-call appliance booking. It provides an asynchronous digital interface allowing customers to report problems, attach photographic evidence of faulty parts, pick convenient repair slots, and receive auto-incrementing tracking IDs (e.g. <code>SR-2026-001</code>).
         </p>
@@ -44,53 +44,13 @@
           The architecture is built completely on frontend technologies (<strong>HTML5, CSS3, Vanilla JavaScript</strong>) utilizing the browser's <strong>HTML5 LocalStorage API</strong> for persistent data management and the <strong>FileReader API</strong> for Base64 Data URL conversions.
         </p>
       </div>
-
-      <!-- Viva Q&A Accordion -->
-      <div class="details-card">
-        <h3 style="margin-bottom:20px; color:var(--secondary);">2. Frequently Asked Viva Questions & Answers</h3>
-
-        <div style="margin-bottom:20px;">
-          <h4 style="color:var(--primary); margin-bottom:4px;">Q1: Why did you not use a backend like Node.js, PHP, or Python?</h4>
-          <p style="font-size:0.95rem; color:var(--text-main);">
-            <strong>Answer:</strong> This project is intentionally developed with pure client-side web technologies (Vanilla JavaScript and LocalStorage) to demonstrate core DOM manipulation, event-driven state handling, file streaming via FileReader, and local data persistence without reliance on third-party frameworks or external server dependencies.
-          </p>
-        </div>
-
-        <div style="margin-bottom:20px;">
-          <h4 style="color:var(--primary); margin-bottom:4px;">Q2: How does the image upload feature work without an external database or S3 bucket?</h4>
-          <p style="font-size:0.95rem; color:var(--text-main);">
-            <strong>Answer:</strong> The file is processed locally using the JavaScript <code>FileReader</code> interface through <code>readAsDataURL()</code>. It converts the image binary stream into an alphanumeric <strong>Base64 Data URL string</strong>. This string is then stored directly within the JSON entity in <code>localStorage</code> and assigned to an <code>&lt;img src="..."&gt;</code> element for zero-latency rendering.
-          </p>
-        </div>
-
-        <div style="margin-bottom:20px;">
-          <h4 style="color:var(--primary); margin-bottom:4px;">Q3: How do you prevent LocalStorage quota overflow?</h4>
-          <p style="font-size:0.95rem; color:var(--text-main);">
-            <strong>Answer:</strong> Standard browser LocalStorage is capped at approximately 5MB. To avoid quota overflow errors, strict client-side validation enforces allowed image file types (JPG, JPEG, PNG) and caps upload size at 2MB.
-          </p>
-        </div>
-
-        <div style="margin-bottom:20px;">
-          <h4 style="color:var(--primary); margin-bottom:4px;">Q4: How does the sequential Request ID generator guarantee uniqueness?</h4>
-          <p style="font-size:0.95rem; color:var(--text-main);">
-            <strong>Answer:</strong> A dedicated sequence counter (<code>smart_appliance_counter</code>) is stored in LocalStorage. Whenever a new form submission triggers <code>generateServiceRequestId()</code>, the current year is retrieved via <code>new Date().getFullYear()</code>, the counter increments atomically, is padded to 3 digits (e.g., <code>001</code>, <code>002</code>), and produces <code>SR-2026-xxx</code>.
-          </p>
-        </div>
-
-        <div style="margin-bottom:20px;">
-          <h4 style="color:var(--primary); margin-bottom:4px;">Q5: How does the 5-stage status timeline update dynamically?</h4>
-          <p style="font-size:0.95rem; color:var(--text-main);">
-            <strong>Answer:</strong> The timeline function in <code>details.js</code> checks the current status against an ordered array of milestones (<code>Request Submitted</code> &rarr; <code>Under Review</code> &rarr; <code>Technician Assigned</code> &rarr; <code>Service in Progress</code> &rarr; <code>Completed</code>). Any milestone whose index is lower than the active stage receives the <code>.done</code> CSS class (green checkmark), while the active milestone receives the <code>.active</code> CSS class (blue pulsing indicator).
-          </p>
-        </div>
-      </div>
-
+    
       <!-- Limitations & Future Enhancements -->
       <div class="details-card">
-        <h3 style="margin-bottom:15px; color:var(--secondary);">3. Project Scope, Limitations & Future Enhancements</h3>
+        <h3 style="margin-bottom:15px; color:var(--secondary);">Enhancements</h3>
         <div class="form-grid-2">
           <div>
-            <h4 style="color:var(--secondary); margin-bottom:8px;">Academic Project Limitations</h4>
+            <h4 style="color:var(--secondary); margin-bottom:8px;">Limitations</h4>
             <ul style="padding-left:20px; font-size:0.9rem; color:var(--text-muted); line-height:1.8;">
               <li>Data is restricted to the current browser profile (LocalStorage).</li>
               <li>No live gateway for payments or credit card processing.</li>
