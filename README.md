@@ -6,9 +6,7 @@ A responsive and user-friendly website designed for Smart Appliances Services, p
 
 🌐 Live Demo
 
-🔗 Live Website: https://kalaiselvi1210.github.io/Smart_appliance_service/about.html
-
----
+🔗 Live Website: https://kalaiselvi1210.github.io/Smart_appliance_service/index.html
 
 📌 Project Overview
 
